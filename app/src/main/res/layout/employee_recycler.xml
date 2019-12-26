@@ -10,8 +10,18 @@
         android:id="@+id/tvId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="35dp"
         android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:textSize="20dp"
+
+        />
+
 
     <TextView
     android:layout_width="match_parent"
@@ -29,14 +39,6 @@
     android:layout_marginLeft="35dp"
     />
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:textSize="20dp"
-
-        />
 
     <TextView
         android:id="@+id/tvProfileImg"
