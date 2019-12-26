@@ -14,12 +14,18 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.employee_crud.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="Employees Lists"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.employee_crud.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="Add Employee"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.example.employee_crud.ui.search.SearchFragment"
+        android:label="Search Employee"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
