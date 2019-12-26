@@ -1,21 +1,30 @@
 package com.example.employee_crud.ui.dashboard;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employee_crud.R;
+import com.example.employee_crud.adapter.EmployeesAdapter;
 import com.example.employee_crud.api.EmployeeAPI;
 import com.example.employee_crud.model.Employee;
+import com.example.employee_crud.url.URL;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,14 +36,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
-    private TextView tvOutput;
 
+    private EmployeesAdapter employeesAdapter;
+    private RecyclerView recyclerView;
+   // private List<Employee>employeeList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
                 ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        final View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
 //        final TextView textView = root.findViewById(R.id.text_dashboard);
 //        dashboardViewModel.getText().observe(this, new Observer<String>() {
 //            @Override
@@ -43,16 +54,17 @@ public class DashboardFragment extends Fragment {
 //            }
 //        });
 
-        tvOutput = root.findViewById(R.id.tvOutput);
+        //tvOutput = root.findViewById(R.id.tvOutput);
+        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://dummy.restapiexample.com/api/v1/")
+                .baseUrl(URL.base_url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        EmployeeAPI employeeAPI = retrofit.create(EmployeeAPI.class);
+         EmployeeAPI employeeAPI = retrofit.create(EmployeeAPI.class);
 
-        Call<List<Employee>> listCall = employeeAPI.getEmployee();
+        Call<List<Employee>> listCall = employeeAPI.getEmployees();
 
         listCall.enqueue(new Callback<List<Employee>>() {
             @Override
@@ -60,30 +72,38 @@ public class DashboardFragment extends Fragment {
 
                 if (!response.isSuccessful())
                 {
-                    tvOutput.setText("code : " + response.code());
+                   // tvOutput.setText("code : " + response.code());
+                   // Toast.makeText(getActivity(), "hadgf" + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Error" + response.code(),Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
-                List<Employee> employeeList = response.body();
-                for(Employee employee : employeeList)
-                {
-                    String data = "";
-                    data += "ID : " + employee.getId() + "\n";
-                    data += "employee_name : " + employee.getEmployee_name() + "\n";
-                    data += "employee_salary : " + employee.getEmployee_salary() + "\n";
-                    data += "employee_age : " + employee.getEmployee_age() + "\n";
-                    data += "profile_image : " + employee.getProfile_image() + "\n";
-                    data += "---------------------------------------" + "\n";
-                    tvOutput.append(data);
-                }
+                   LoadDataList(response.body());
             }
+
 
             @Override
             public void onFailure(Call<List<Employee>> call, Throwable t) {
+                Log.d("Error displayed","onFailure:"+t.getLocalizedMessage());
 
-                tvOutput.setText("Error" + t.getMessage());
+                // tvOutput.setText("Error" + t.getMessage());
             }
         });
 
-        return root;
+         return root;
     }
+
+    private void LoadDataList(List<Employee>employeeList)
+    {
+        employeesAdapter = new EmployeesAdapter(employeeList);
+
+        //using a linear layout manager
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        //set adapter to the recyclerview
+        recyclerView.setAdapter(employeesAdapter);
+    }
+
+
 }
