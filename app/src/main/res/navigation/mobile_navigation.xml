@@ -28,4 +28,10 @@
         android:name="com.example.employee_crud.ui.search.SearchFragment"
         android:label="Search Employee"
         tools:layout="@layout/search_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_updateDelete"
+        android:name="com.example.employee_crud.ui.updatedelete.UpdateDeleteFragment"
+        android:label="Update/Delete Employee"
+        tools:layout="@layout/update_delete_fragment" />
 </navigation>

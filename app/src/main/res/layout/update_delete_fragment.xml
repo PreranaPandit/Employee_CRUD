@@ -33,6 +33,7 @@
         android:id="@+id/etEmployeeName"
         android:hint="Employee Name"
         android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         />
 
     <EditText
@@ -41,6 +42,7 @@
         android:id="@+id/etEmpSalary"
         android:hint="Employee Salary"
         android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         />
 
     <EditText
@@ -49,6 +51,7 @@
         android:id="@+id/etEmployeeAge"
         android:hint="Employee Age"
         android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         />
 
     <Button
@@ -56,8 +59,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnUpdate"
         android:text="UPDATE"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:background="#7CB6E2"
+        android:textStyle="bold|normal"
+        android:textSize="25dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
 
         />
@@ -67,8 +74,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnDelete"
         android:text="DELETE"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:background="#ACC4C7"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
         />
 
 

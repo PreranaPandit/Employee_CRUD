@@ -13,12 +13,17 @@
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_person_add_black_24dp"
         android:title="Add Employee" />
 
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Search Employee" />
+
+    <item
+        android:id="@+id/navigation_updateDelete"
+        android:icon="@drawable/ic_update_black_24dp"
+        android:title="Update/Delete Employee" />
 
 </menu>
