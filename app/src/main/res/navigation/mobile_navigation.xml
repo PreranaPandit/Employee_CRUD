@@ -27,5 +27,5 @@
         android:id="@+id/navigation_search"
         android:name="com.example.employee_crud.ui.search.SearchFragment"
         android:label="Search Employee"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/search_fragment" />
 </navigation>
