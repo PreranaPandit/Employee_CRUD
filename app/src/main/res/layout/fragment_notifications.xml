@@ -12,12 +12,14 @@
         android:id="@+id/etName"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="150dp"
+        android:layout_marginRight="30dp"
         android:hint="Enter Name"
         />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
         android:id="@+id/etSalary"
         android:hint="Enter Salary"
         android:layout_marginLeft="30dp"
@@ -29,6 +31,7 @@
         android:id="@+id/etAge"
         android:hint="Enter Age"
         android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         />
 
     <Button
@@ -37,6 +40,9 @@
         android:id="@+id/btnRegister"
         android:text="REGISTER"
         android:layout_margin="50dp"
+        android:background="#6E7DC5"
+        android:textColor="#fff"
+        android:textSize="30dp"
         />
 
 
