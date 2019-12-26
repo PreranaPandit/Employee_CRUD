@@ -16,6 +16,13 @@ public class Employee {
         this.profile_image = profile_image;
     }
 
+    public Employee(int id, String employee_name, float employee_salary, int employee_age) {
+        this.id = id;
+        this.employee_name = employee_name;
+        this.employee_salary = employee_salary;
+        this.employee_age = employee_age;
+
+    }
     public int getId() {
         return id;
     }
